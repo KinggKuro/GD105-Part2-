@@ -10,7 +10,7 @@ void setup(){
 }
 
 void draw(){
-  fill(255, 125);
+  fill(255);
   rect(width/2, height/2, width, height);
   
   if(mousePressed && (mouseButton == LEFT)) {
@@ -24,7 +24,7 @@ void draw(){
     noStroke();
     fill(0);
     
-    text("CLICK AND DRAG ANYWHERE TO DRAW", 512, 125 + sin(frameCount*0.09)*15);
+    text("CLICK AND DRAG ANYWHERE", 512, 125 + sin(frameCount*0.09)*15);
     circle(dot.x, dot.y, 50);
   }
 }
