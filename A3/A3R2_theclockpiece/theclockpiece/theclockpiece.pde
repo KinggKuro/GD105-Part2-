@@ -25,7 +25,7 @@ void setup(){
   distx = width/2;
   disty = 550;
   
-  fortnite = createFont("BurbankBigRegular-Bold", 50);
+  fortnite = loadFont("BurbankBigRegular-Bold", 50);
   textFont(fortnite);
 }
 
