@@ -32,15 +32,17 @@ void draw() {
   noStroke();
   circle(width/2, height/2, 120 + cos(frameCount*0.03)*5);
   circle(width/2, height/2, 120 + cos(frameCount*0.03)*15);
+  circle(width/2, height/2, 120 + cos(frameCount*0.03)*25);
 
   fill(#FFF586, 225);
   circle(width/2, height/2, 110 + cos(frameCount*0.03)*15);
+  circle(width/2, height/2, 95 + cos(frameCount*0.03)*15);
   resetMatrix();
 
 
   // ROTATING STARS BEING DRAWN
   for (int i = 0; i < numStars; i++) {
     fill(255);
-    circle(circles[i].x + cos(frameCount*-0.03)*5, circles[i].y + sin(frameCount*-0.03)*5, sizes[i]);
+    circle(circles[i].x + cos(frameCount*-0.03)*5, circles[i].y, sizes[i]);
   }
 }
