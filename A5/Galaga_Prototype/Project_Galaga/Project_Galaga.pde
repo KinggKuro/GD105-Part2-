@@ -1,16 +1,22 @@
 // DID SOME RESEARCH ON CERTAIN ASPECTS: https://www.youtube.com/watch?v=_k_yRbUeVxY&t=633s (FIRING PROJECTILES)
 
-int s = 300; // s = stars
-player Ship;
+int s = 125;// s = stars
 
-// ARRAY FOR LASER BULLETS
+// CLASSES
+player Ship;
+playButton start;
+title game;
+
+// ARRAY LISTS
 ArrayList<laser>bulletList;
 
-// ARRAY FOR SPACE BACKGROUND
+// ARRAYS
 outerSpace[] space;
 
 void setup() {
   size(1280, 720);
+  rectMode(CENTER);
+  textAlign(CENTER);
   frameRate(125);
 
   space = new outerSpace[s];
@@ -21,8 +27,9 @@ void setup() {
   // CONSTRUCTOR FOR LASER BULLETS
   bulletList = new ArrayList<laser>();
 
-  // CONSTRUCTOR FOR PLAYER CHARACTER
-  Ship = new player(width/2, height*3/4, 15, 35);
+  Ship = new player(width/2, height*3/4, 15, 35); // SPACESHIP
+  start = new playButton(width/2, height * 6/7, 150, 60); // START BUTTON
+  game = new title(width/2, height * 2/10); // GAME TITLE
 }
 
 void draw() {
@@ -41,6 +48,7 @@ void draw() {
     Bullet.checkRemove();
   }
 
+  // MANAGING INPUT LAG / MAKING SURE THE GAME DOESN'T LAG FROM TOO MANY PROJECTILES BEING FIRED
   for (int i = bulletList.size()-1; i >= 0; i--) {
     laser Bullet = bulletList.get(i);
 
@@ -49,11 +57,18 @@ void draw() {
     }
   }
 
-  // DRAWING/RENDERING THE SPACESHIP (PLAYABLE CHARACTER)
-  Ship.render();
+  Ship.render();  // PLAYER SPACESHIP
   Ship.move();
-}
 
+  start.show();  // PLAY BUTTON
+  start.toggle();
+
+  if (playButton.isClicked()) {
+  }
+
+
+  game.display(); // GAME TITLE
+}
 
 // PLAYER CONTROLS
 void keyPressed() {
@@ -74,7 +89,7 @@ void keyPressed() {
   }
 
   if (key == 'e') {
-    bulletList.add(new laser(Ship.x, Ship.y));
+    bulletList.add(new laser(Ship.x, Ship.y)); // WHEN 'E' IS PRESSED, PLAYER WILL SHOOT
   }
 }
 

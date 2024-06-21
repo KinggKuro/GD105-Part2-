@@ -3,8 +3,6 @@ class outerSpace {
   float y;
   float z;
 
-  int size = (int)random(2, 5);
-
   outerSpace(float sX, float sY, float sZ) {
     x = sX;
     y = sY;
@@ -12,7 +10,7 @@ class outerSpace {
   }
 
   void update() {
-    float spd = map(z, 0, 2, 5, 2);
+    float spd = map(z, 1, 5, 2, 8);
     y = y + spd;
     if (y > height + 10) {
       y = -10;
@@ -21,10 +19,10 @@ class outerSpace {
   }
 
   void show() {
-    color col = color(random(150, 255));
-    
-    fill(col);
+    fill(255);
     noStroke();
-    circle(x, y, size);
+    
+    float t = map(z, 0, 5, 1, 2);
+    ellipse(x, y, t, 10);
   }
 }

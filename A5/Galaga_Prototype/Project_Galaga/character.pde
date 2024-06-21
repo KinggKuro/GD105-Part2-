@@ -32,6 +32,12 @@ class player {
   }
 
   void render() {
+    // SPACESHIP'S DESIGN
+    fill(#F7AA02, 150);
+    ellipse(x, y + 20, w + 15 + cos(frameCount*0.21)*1, h - 3);
+    fill(#FFDB8B, 175);
+    ellipse(x, y + 20, w - 30 + cos(frameCount*0.21)*1, h - 15);
+
     fill(255);
     noStroke();
     ellipse(x, y, w, h);

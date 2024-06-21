@@ -22,12 +22,12 @@ class laser {
   void create() {
     fill(#6702F7);
     noStroke();
-    circle(x - 3, y, size);
-    circle(x + 3, y, size);
+    ellipse(x - 3, y, size + cos(frameCount*0.15) * 1, size + 10);
+    ellipse(x + 3, y, size + cos(frameCount*0.15) * 1, size + 10);
   }
 
   void fire() {
-    y -= 7;
+    y -= 3;
   }
 
   void checkRemove() {
