@@ -20,9 +20,8 @@ class title {
   }
 
   void display() {
-    PFont Galaga = createFont("Cambria", size);
-    textFont(Galaga);
-    textSize(size);
+    PFont Galaga = loadFont("Cambria.vlw");
+    textFont(Galaga, 120);
     
     fill(col1);
     text("PROJECT:", xpos - 200, ypos);

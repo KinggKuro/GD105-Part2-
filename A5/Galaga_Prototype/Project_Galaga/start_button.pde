@@ -1,78 +1,55 @@
 class playButton {
-  PFont buttonStyle;
-  int xpos;
-  int ypos;
-  int Width;
-  int Height;
+  PFont Style;
+
+  int x;
+  int y;
+  int w;
+  int h;
+
+  boolean Clicked;
+  boolean Pressed;
+  boolean gameToggled;
 
   color col;
 
-  boolean Pressed;
-  boolean Clicked;
-  boolean gameToggled;
+  playButton(int xpos, int ypos, int Width, int Height) {
+    x = xpos;
+    y = ypos;
+    w = Width;
+    h = Height;
 
-  playButton(int x, int y, int w, int h) {
-    xpos = x;
-    ypos = y;
-    Width = w;
-    Height = h;
+    Style = loadFont("Calibri-Bold.vlw");
 
-    buttonStyle = createFont("Arial", 40);
-
-    col  = #001DAA;
-
-    Pressed = false;
     Clicked = false;
+    Pressed = false;
     gameToggled = false;
+
+    col = #5500F5;
   }
 
   void toggle() {
-    if (mousePressed == true && mouseButton == LEFT && Pressed == false) {
-      Pressed = true;
-      if (mouseX >= xpos -75 && mouseX <= xpos+Width && mouseY > ypos - 75 && mouseY <= ypos+Height) {
-        Clicked = true;
-        if (Pressed == true && Clicked == true) {
+    if (mousePressed == true && mouseButton == LEFT && Clicked == false) {
+      Clicked = true;
+      if (mouseX >= x - 75 && mouseX <= x + w && mouseY >= y - 60 && mouseY <= y + h) {
+        Pressed = true;
+        if (Clicked == true && Pressed == true) {
           gameToggled = true;
-        } else {
-          Clicked = false;
-          Pressed = false;
-          gameToggled = false;
         }
+      } else {
+        Clicked = false;
+        Pressed = false;
+        gameToggled = false;
       }
     }
   }
 
   void show() {
+    fill(col);
     stroke(255);
     strokeWeight(4);
-    rect(xpos, ypos, Width, Height);
-
-    fill(255);
-    textFont(buttonStyle);
-    text("PLAY", start.xpos, start.ypos + 15);
-
-    if (mouseX >= xpos - 75 && mouseX <= xpos+Width && mouseY > ypos - 60 && mouseY <= ypos+Height) {
-      fill(#8400DE);
-      stroke(255);
-      strokeWeight(4);
-      rect(xpos, ypos, Width, Height);
-
-      fill(#00DEF5);
-      textFont(buttonStyle);
-      text("PLAY", start.xpos, start.ypos + 15);
-    } else {
-      fill(col);
-      stroke(255);
-      strokeWeight(4);
-      rect(xpos, ypos, Width, Height);
-
-      fill(255);
-      textFont(buttonStyle);
-      text("PLAY", start.xpos, start.ypos + 15);
-    }
-  }
-
-  boolean isClicked() {
-    return Clicked;
+    rect(x, y, w, h);
+    
+    textFont(Style, 50);
+    text("PLAY", x, y + 15);
   }
 }

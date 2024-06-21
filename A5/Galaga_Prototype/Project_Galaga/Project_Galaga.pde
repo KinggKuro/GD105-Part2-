@@ -63,8 +63,6 @@ void draw() {
   start.show();  // PLAY BUTTON
   start.toggle();
 
-  if (playButton.isClicked()) {
-  }
 
 
   game.display(); // GAME TITLE
