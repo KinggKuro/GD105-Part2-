@@ -1,6 +1,5 @@
 class playButton {
-  PFont Style;
-
+  PFont buttonStyle;
   int x;
   int y;
   int w;
@@ -8,7 +7,7 @@ class playButton {
 
   boolean Clicked;
   boolean Pressed;
-  boolean gameToggled;
+  boolean gameStart;
 
   color col;
 
@@ -18,11 +17,11 @@ class playButton {
     w = Width;
     h = Height;
 
-    Style = loadFont("Calibri-Bold.vlw");
+    buttonStyle = loadFont("SitkaSmall-Bold-50.vlw");
 
     Clicked = false;
     Pressed = false;
-    gameToggled = false;
+    gameStart = false;
 
     col = #5500F5;
   }
@@ -30,15 +29,11 @@ class playButton {
   void toggle() {
     if (mousePressed == true && mouseButton == LEFT && Clicked == false) {
       Clicked = true;
-      if (mouseX >= x - 75 && mouseX <= x + w && mouseY >= y - 60 && mouseY <= y + h) {
+      if (mouseX >= x - 60 && mouseX <= x + w && mouseY >= y - 40 && mouseY <= y + h) {
         Pressed = true;
         if (Clicked == true && Pressed == true) {
-          gameToggled = true;
+          gameStart = true;
         }
-      } else {
-        Clicked = false;
-        Pressed = false;
-        gameToggled = false;
       }
     }
   }
@@ -47,9 +42,34 @@ class playButton {
     fill(col);
     stroke(255);
     strokeWeight(4);
-    rect(x, y, w, h);
-    
-    textFont(Style, 50);
-    text("PLAY", x, y + 15);
+    rect(x, y - sin(frameCount * 0.02) * 5, w, h);
+
+    fill(255);
+    textFont(buttonStyle, 50);
+    text("PLAY", x, y + 15 - sin(frameCount * 0.02) * 5);
+
+    if (mouseX >= x - 75 && mouseX <= x + w && mouseY >= y - 60 && mouseY <= y + h) {
+      fill(255);
+      stroke(col);
+      strokeWeight(4);
+      rect(x, y - sin(frameCount * 0.02) * 5, w, h);
+
+      fill(col);
+      textFont(buttonStyle, 50);
+      text("PLAY", x, y + 15 - sin(frameCount * 0.02) * 5);
+    } else {
+      fill(col);
+      stroke(255);
+      strokeWeight(4);
+      rect(x, y - sin(frameCount * 0.02) * 5, w, h);
+
+      fill(255);
+      textFont(buttonStyle, 50);
+      text("PLAY", x, y + 15 - sin(frameCount * 0.02) * 5);
+    }
+  }
+
+  boolean isClicked() {
+    return Clicked;
   }
 }

@@ -1,5 +1,7 @@
 class title {
   PVector title;
+  PFont GalagaType;
+
   int xpos;
   int ypos;
 
@@ -8,25 +10,23 @@ class title {
   color col2;
 
   title(int x, int y) {
+    GalagaType = loadFont("Candara-Bold-50.vlw");
     xpos = x;
     ypos = y;
 
     title = new PVector(width/2, height * 1/10);
 
     size = 100;
-    
+
     col1 = #FFFFFF;
     col2 = #8400DE;
   }
 
   void display() {
-    PFont Galaga = loadFont("Cambria.vlw");
-    textFont(Galaga, 120);
-    
+    textFont(GalagaType, 120);
     fill(col1);
-    text("PROJECT:", xpos - 200, ypos);
-    
+    text("PROJECT:", xpos - 225, ypos + sin(frameCount * 0.06) * 5);
     fill(col2);
-    text("GALAGA", xpos + 185, ypos);
+    text("GALAGA", xpos + 235, ypos + sin(frameCount * 0.06) * 5);
   }
 }

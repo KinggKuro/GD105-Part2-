@@ -1,11 +1,13 @@
 // DID SOME RESEARCH ON CERTAIN ASPECTS: https://www.youtube.com/watch?v=_k_yRbUeVxY&t=633s (FIRING PROJECTILES)
 
-int s = 125;// s = stars
+int s = 125; // stars in outer space
+int m = 5;   // number of mobs that spawn per wave
 
 // CLASSES
 player Ship;
 playButton start;
-title game;
+title gameName;
+
 
 // ARRAY LISTS
 ArrayList<laser>bulletList;
@@ -24,12 +26,14 @@ void setup() {
     space[i] = new outerSpace(random(width), -10, random(5));
   }
 
-  // CONSTRUCTOR FOR LASER BULLETS
+  // ARRAY LIST CONSTRUCTORS
   bulletList = new ArrayList<laser>();
 
-  Ship = new player(width/2, height*3/4, 15, 35); // SPACESHIP
+
+  Ship = new player(width/2, height*3/4, 15, 35);         // SPACESHIP
   start = new playButton(width/2, height * 6/7, 150, 60); // START BUTTON
-  game = new title(width/2, height * 2/10); // GAME TITLE
+  gameName = new title(width/2, height * 2/10);           // GAME TITLE
+
 }
 
 void draw() {
@@ -62,10 +66,11 @@ void draw() {
 
   start.show();  // PLAY BUTTON
   start.toggle();
+  if (start.isClicked()) {
+    // BEGIN WAVE 1
+  }
 
-
-
-  game.display(); // GAME TITLE
+  gameName.display(); // GAME TITLE
 }
 
 // PLAYER CONTROLS
