@@ -1,37 +1,35 @@
-class player {
-  int x, y;
-  int size;
-  color col;
+class P1 {
+  int x;
+  int y;
+  int w;
+  int h;
 
-  player (int xInitial, int yInitial, int psize, color pcol) {
-    x = xInitial;
-    y = yInitial;
-    size = psize;
-    col  = pcol;
-  }
+  boolean Up;
+  boolean Down;
 
-  player() {
-    x = width/2;
-    y = height * 10/11;
+  P1 (int originX, int originY) {
+    x = originX;
+    y = originY;
 
-    size = 70;
-    col  = #420052;
+    w = 20;
+    h = 120;
   }
 
   void render() {
-    fill(#D7A7FA);
-    stroke(col);
-    strokeWeight(2);
-    rect(x, y, size, size - 55);
+    fill(255);
+    noStroke();
+    rect(x, y, w, h);
   }
 
   void move() {
-    if (pingPong.gameStart == true) {
-      x = mouseX;
-      y = height * 10/11;
-    } else {
-      x = width/2;
-      y = height * 10/11;
+    if (gameStart) {
+      y = mouseY - h / 2;
+      if (y > height - 60) {
+        y = (height - 60) + h / 120;
+      }
+      if (y < 90) {
+        y = (0 + 60) + h / 120;
+      }
     }
   }
 }

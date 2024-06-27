@@ -1,47 +1,36 @@
-int s = 125;
+int s = 200;
+boolean gameStart;
 
-// NORMAL CLASSES
-ball pingPong;
-player P1;
-CPU    P2;
+pong ball;      // PING PONG BALL
+prompt1 prompt; // CLICK TO START
 
-// ARRAY CLASSES
-backdrop[] space;
+P1 paddle;  // PLAYER 1 CLASS
 
 void setup() {
   size(1280, 720);
   rectMode(CENTER);
-  frameRate(120);
+  textAlign(CENTER);
+  frameRate(75);
   smooth();
 
-  P1 = new player();
-  P2 = new CPU();
-  pingPong = new ball(width/2, height/2);
+  // BOOLEANS
+  gameStart = false;
 
-  space = new backdrop[s];
-  for (int i = 0; i < space.length; i++) {
-    space[i] = new backdrop(random(width), -10, random(5));
-  }
+  // CONSTRUCTOR CLASSES
+  ball     = new pong(width/2, height/2);
+  paddle   = new P1(width * 1/13, height / 2);
+  prompt   = new prompt1(width/2, height/2);
 }
 
 void draw() {
   background(0);
-  for (int i = 0; i < space.length; i++) {
-    space[i].update();
-    space[i].render();
-  }
+  prompt.render();
 
-  P1.render();       // PLAYER 1
-
-  P2.render();       // PLAYER 2 (COMPUTER)
-
-
-  pingPong.render(); // PING PONG BALL
-}
-
-void keyPressed() {
-  if (key == ' ') {
-    pingPong.gameStart = true;
-    pingPong.move();
-  }
+  // PING PONG BALL
+  ball.render();
+  ball.move();
+  
+  // PADDLE(S)
+  paddle.render();
+  paddle.move();
 }
